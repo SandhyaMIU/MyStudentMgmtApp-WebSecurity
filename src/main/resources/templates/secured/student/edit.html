@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management System :: Edit Student</title>
+</head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+
+<h3> Edit Student Form</h3>
+
+<form id="studentForm" method="post" th:action="@{/secured/student/update (studentId=${student.studentId}) }" th:object="${student}">
+    <fieldset>
+
+        <div >
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="studentNumber">*Student Number:</label>
+
+                       <!-- <span th:if="${#fields.hasErrors('studentNumber')}" th:errors="*{studentNumber}"
+                              style="color: red;display: block;"></span>-->
+
+                        <input id="studentNumber" name="studentNumber" type="text" class="form-control"
+                               th:value="${student.studentNumber}"  autofocus>
+
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="hidden" name="studentId" th:value="${student.studentId}" />
+                        <div class="form-group">
+                            <label for="firstName">*Student First Name:</label>
+                            <!--<span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+                                  style="color: red;display: block;"></span>-->
+
+                            <input id="firstName" name="firstName" type="text" class="form-control"
+                                   th:value="${student.firstName}" autofocus>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="middleName">Student Middle Name:</label>
+                            <!--<span th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}"
+                                  style="color: red;display: block;"></span>-->
+
+                            <input id="middleName" name="middleName" type="text" class="form-control"
+                                   th:value="${student.middleName}" autofocus>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="lastName">*Student Last Name:</label>
+                            <!--<span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                                  style="color: red;display: block;"></span>-->
+
+                            <input id="lastName" name="lastName" type="text" class="form-control"
+                                   th:value="${student.lastName}" autofocus>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="cgpa">Student GPA:</label>
+                           <!-- <span th:if="${#fields.hasErrors('cgpa')}" th:errors="*{cgpa}"
+                                  style="color: red;display: block;"></span>-->
+
+                            <input id="cgpa" name="cgpa" type="text" class="form-control"
+                                   th:value="${student.cgpa}" autofocus>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="dateOfEnrollment">Date of Enrollment:</label>
+                            <!--<span th:if="${#fields.hasErrors('dateOfEnrollment')}" th:errors="*{dateOfEnrollment}"
+                                  style="color: red;display: block;"></span>-->
+
+                            <input id="dateOfEnrollment" name="dateOfEnrollment" type="text" class="form-control"
+                                   th:value="${student.dateOfEnrollment}" autofocus>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="dateOfEnrollment">Is International:</label>
+                            <!--<span th:if="${#fields.hasErrors('dateOfEnrollment')}" th:errors="*{dateOfEnrollment}"
+                                  style="color: red;display: block;"></span>-->
+                            <div><input type="radio" id="international_true" name="international_true"
+                                        class="form-control" value="1"
+                                        th:value="${student.isInternalional}" autofocus>
+                                <label for="international_true">International</label></div>
+
+                            <div><input type="radio" id="international_false" name="international_false"
+                                        class="form-control" value="0"
+                                        th:value="${student.isInternalional}" autofocus>
+                                <label for="international_true">Local</label></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!--<div class="form-group row"><label class="col-4 col-form-label">Is International</label>
+                  <div class="col-8">
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="international-true" name="international-true"
+                             class="custom-control-input" value="1" th:field="*{isInternalional}"> <label
+                            class="custom-control-label" for="international-true">International</label></div>
+                    <div class="custom-control custom-radio custom-control-inline"><input type="radio"
+                                                                                          id="international-false"
+                                                                                          name="international-false"
+                                                                                          class="custom-control-input"
+                                                                                          value="0"
+                                                                                          th:field="*{isInternalional}">
+                      <label class="custom-control-label" for="international-false">Local</label></div>
+                  </div>
+                </div>-->
+
+
+
+
+
+
+                <!-- <div style="padding-top: .75em;">
+                   <div>
+                     <div style="float:right;">
+                       <button id="btnReset" type="reset" class="btn btn-outline-info" style="margin-right: 2em;">Reset</button>
+                       <a href="/fairfieldlibrary/publisher/list" class="btn btn-outline-warning" style="margin-right: 2em;">Cancel</a>
+                       <button id="btnSubmit" type="submit" class="btn btn-outline-primary">Register Publisher</button>
+                     </div>
+                   </div>
+                 </div>
+               </div>-->
+
+                <div >
+                    <div>
+                        <div >
+
+                            <a href="/secured/student/list" class="btn btn-outline-warning" style="margin-right: 2em;">Cancel</a>
+                            <button id="btnSubmit" type="submit" class="btn btn-outline-primary">Update Student</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </fieldset>
+
+
+</form>
+
+</body>
+</html>

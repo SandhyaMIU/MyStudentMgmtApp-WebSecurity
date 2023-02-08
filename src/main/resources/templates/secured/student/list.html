@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Management System :: System Administration</title>
+</head>
+<body>
+  <header th:replace="fragments/header :: header"></header>
+
+<main>
+  <h1>Welcome to the System Administration</h1>
+  <nav>
+    <a href="/secured/student/list">Students</a> |
+    <a>Transcripts</a> |
+    <a>Classrooms</a> |
+  </nav>
+
+    <div >
+        <div >
+            <span>Search</span>
+            <input type="text" id="search-input" name="search-input" th:value="${searchValue}" />
+            <button type="button" class="btn btn-primary" onclick="location.href = '/secured/student/search?searchValue=' + $('#search-input').val();">Search</button>
+        </div>
+    </div>
+
+  <section>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Student Number</th>
+          <th>First Name</th>
+          <th>Middle Name</th>
+          <th>Last Name</th>
+          <th>GPA</th>
+          <th>Enrollment Date</th>
+          <th>isInternational</th>
+          <th scope="col">Action</th>
+
+
+
+          <!--<th>Classroom</th>
+          <th>Transcript</th>-->
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="student, counter : ${students}">
+            <th th:text="${counter.count}"></th>
+            <td th:text="${student.studentNumber}"></td>
+            <td th:text="${student.firstName}"></td>
+            <td th:text="${student.middleName}"></td>
+            <td th:text="${student.lastName}"></td>
+            <td th:text="${student.cgpa}"></td>
+            <td th:text="${student.dateOfEnrollment}"></td>
+            <td th:text="${student.isInternalional}"></td>
+            <td><a th:href="@{'/secured/student/edit/{studentId}'(studentId=${student.studentId})}">
+                <i class="fa-regular fa-pen-to-square"></i> Edit Student
+            </a></td>
+
+            <td>
+                <a th:href="@{'/secured/student/delete/{studentId}'(studentId=${student.studentId})}">
+                    <i class="fa-solid fa-delete-left"></i> Delete Student
+                </a>
+            </td>
+
+
+           <!-- <td th:if="${student.classroom != null}">
+              <p th:text="${student.classroom}"></p>
+            </td>
+            <td th:if="${student.primaryTranscript != null}">
+              <p th:text="${student.primaryTranscript}"></p>
+            </td>-->
+
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+    <a class="btn btn-outline-primary btn-lg" href="/secured/student/new">
+        <i class="fa-brands fa-product-hunt"></i> Add a New Student
+    </a>
+
+</main>
+<footer></footer>
+</body>
+</html>
